@@ -66,6 +66,16 @@ The following is provided to IOpipe:
  - time_sec          (execution time: secs)
  - time_nanosec      (execution time: nanosecs)
 
+# VPC Configuration
+
+- Create a VPC,
+- Create a VPC Subnet,
+- Create an Elastic IP
+- Create an Internet Gateway (or NAT Gateway???)
+- Create a NAT Gateway
+- Attach your Internet Gateay to your VPC.
+- Edit Route Tables: add a route for 0.0.0.0/8 to your NAT gateay, make sure the route is also associated with your subnet.
+
 # License
 
 Apache 2.0
