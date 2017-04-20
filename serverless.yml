@@ -28,6 +28,11 @@ functions:
     handler: nodejs/handler.longRunningSuccess
     events:
       - schedule: rate(5 minutes)
+  longRunningTimeout:
+    handler: nodejs/handler.longRunningTimeout
+    timeout: 1
+    events:
+      - schedule: rate(2 minutes)
   customEvents:
     handler: nodejs/handler.customEvents
     events:

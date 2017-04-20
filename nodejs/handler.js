@@ -28,6 +28,10 @@ exports.longRunningSuccess = iopipe(
   }
 )
 
+exports.longRunningTimeout = iopipe(
+  function (event, context) { }
+)
+
 exports.customEvents = iopipe(
   function (event, context) {
     iopipe.log("simple-key", 42);
