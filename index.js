@@ -171,8 +171,8 @@ function _make_generateLog(metrics, func, start_time, config, context) {
 function setConfig(configObject) {
   return {
     url: (configObject && configObject.url) ? configObject.url : '',
-    clientId: configObject && (configObject.token || configObject.clientId) || process.env.IOPIPE_TOKEN || process.env.IOPIPE_CLIENTID || '',
-    debug: configObject && configObject.debug || process.env.IOPIPE_DEBUG || false,
+    clientId: process.env.IOPIPE_TOKEN || process.env.IOPIPE_CLIENTID || (configObject && (configObject.token || configObject.clientId)) || '',
+    debug: process.env.IOPIPE_DEBUG || (configObject && configObject.debug) || false,
     networkTimeout: configObject && configObject.networkTimeout || 5000,
     timeoutWindow: configObject && configObject.timeoutWindow || 50
   }
