@@ -190,6 +190,9 @@ function _make_generateLog(metrics, func, start_time, config, dnsPromise, contex
             }
             callback()
           })
+
+          req.write(JSON.stringify(response_body))
+          req.end()
         }).catch((err) => {
           // Log errors, don't block on failed requests
           if (config.debug) {
@@ -198,9 +201,6 @@ function _make_generateLog(metrics, func, start_time, config, dnsPromise, contex
           }
           callback()
         })
-
-        req.write(JSON.stringify(response_body))
-        req.end()
       }
     ).catch((err) => {
       if (err && config.debug) {
@@ -228,7 +228,7 @@ module.exports = function(options) {
 
       /* Only resolve DNS on coldstarts */
       var dnsPromise = new Promise((resolve, reject) => {
-        dns.lookup(config.host, (err, address, family) => {
+        dns.lookup(config.host, (err, address) => {
           if (err) {
             reject(err)
           }
